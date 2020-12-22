@@ -1,7 +1,8 @@
 // Event     : Latihan 1
 // Deskripsi : Membuat server dengan modul http
 // Created   : 22 Desember 2020 23:25 wib 
-// author    :  Oya Suryana
+// author    : Oya Suryana
+// blog      : https://ozs.web.id    
 
 
 var http=require('http');
