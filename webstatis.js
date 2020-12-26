@@ -10,13 +10,23 @@
     var fs = require('fs');
 
     http.createServer(function(req,res){
-        
-        fs.readFile('demoFS1.html',function(err,data){
+        var q= url.parse(req.url,true);
+        var namaFile= q.pathname;
+        if(namaFile=='/'){
+            filenya='index.html';
+        } else {
+            filenya=namaFile.replace('/','');
+        }
+        fs.readFile(filenya,function(err,data){
+            if(err){
+                res.writeHead(404,{'Content-Type':'text/html'});
+                return res.end('Error 404 : Halaman tidak ditemukan');
+            }
+
             res.writeHead(200,{'Content-type':'text/html'});
             res.write(data);
-            res.end(); 
-        })    
+            return  res.end(); 
+        })    ;
 
     }).listen(8001);
-
     console.log('Server berjalan di port 8001');
